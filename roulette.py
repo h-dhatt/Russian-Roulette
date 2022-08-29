@@ -11,7 +11,6 @@ def main():
     player = False  
     pc = False  
 
-    # menu
     print("/********************************/")
     print("    Welcome to russian roulette")
     print("/********************************/")
@@ -21,22 +20,18 @@ def main():
     print("There is one gun and one bullet")
     time.sleep(2)
 
-    # take input from the user
     answer = input(
         "Please press 'm' if you want to start first or 'p' if you want the pc to start first: "
     )
 
-    # check input
     while answer != "m" and answer != "p":
         answer = input("please enter again ('m' or 'p'): ")
 
-    # set turn
     if answer == 'm':
         turn = "player"
     else:
         turn = "pc"
 
-    # game starts
     while numOfRounds != 0 and (pc == False and player == False):
         print(f"\nRound number {numOfRounds}/6")
         time.sleep(1)
@@ -54,19 +49,18 @@ def main():
         print("...")
         time.sleep(2)
 
-        # get the bullet in the chamber
         shot = gun.pop(numOfRounds - 1)
 
         if shot:
             print("The gun went off!")
             print("You died." if turn == "player" else "The PC died.")
-            if turn == "player":  # set up who died
+            if turn == "player":  
                 player = True
             else:
                 pc = True
         else:
             print("Nothing happened. Phew!")
-            if turn == "player":  # flip the turn
+            if turn == "player":  
                 turn = "pc"
             else:
                 turn = "player"
@@ -80,7 +74,7 @@ def main():
         print("You died! Better luck next time...")
     else:
         print("You survived!")
-    print("Goodbye")
+    print("Goodbye.")
 
 
 main()
